@@ -38,6 +38,7 @@ const integrate = (numbers: number[]): number[] => {
   }
 };
 
+//Runtime: O(n)
 const RomanToInteger = (roman: string): number => {
   let result = 0;
   let romanArray: string[] = [];

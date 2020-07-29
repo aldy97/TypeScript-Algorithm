@@ -1,3 +1,4 @@
+//Runtime: O(n)
 const isPalindrome = (number: number): boolean => {
   if (number < 0) {
     return false;
