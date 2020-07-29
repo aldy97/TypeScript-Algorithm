@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var isPalindrome = function (number) {
     if (number < 0) {
         return false;
@@ -7,15 +8,17 @@ var isPalindrome = function (number) {
         return true;
     }
     else {
-        var stringNum = number.toString();
-        var stringNumList = [];
-        for (var i in (stringNum.length - 1)) {
-            stringNumList.push(stringNum[i]);
+        var numberInString = number.toString();
+        var numberInArray = [];
+        for (var i = 0; i < numberInString.length; i++) {
+            numberInArray.push(numberInString[i]);
         }
-        return stringNumList === stringNumList.reverse();
+        for (var i = 0; i < numberInArray.length; i++) {
+            if (numberInArray[i] !== numberInArray.reverse()[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 };
-console.log(isPalindrome(121)); //true
-console.log(isPalindrome(-121)); //false
-console.log(isPalindrome(23)); //false
-console.log(isPalindrome(0)); //true
+exports.default = isPalindrome;
