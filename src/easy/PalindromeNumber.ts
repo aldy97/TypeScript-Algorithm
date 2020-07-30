@@ -18,5 +18,3 @@ const isPalindrome = (number: number): boolean => {
     return true;
   }
 };
-
-export default isPalindrome;
