@@ -1,4 +1,3 @@
-//if nums is in ascending order, useing double pointers is better
 function twoSum(nums: number[], target: number) {
   let map: Map<number, number> = new Map<number, number>();
   for (let i = 0; i < nums.length; i++) {
