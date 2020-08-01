@@ -1,4 +1,4 @@
-class ListNode {
+export class ListNode {
   val: number;
   next: ListNode | null;
   constructor(val?: number, next?: ListNode | null) {
@@ -21,7 +21,6 @@ function addTwoNumbers(
     let y = p2 != null ? p2.val : 0;
     let sum = carry + x + y;
     carry = sum / 10 >= 1 ? 1 : 0;
-    console.log(carry);
     curr.next = new ListNode(sum % 10);
     curr = curr.next;
     if (p1 !== null) p1 = p1.next;
