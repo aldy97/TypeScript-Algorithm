@@ -10,9 +10,7 @@ function lengthOfLongestSubstring(s: string): number {
       set.push(s.charAt(j++));
       ans = Math.max(ans, j - i);
     } else {
-      console.log(set);
       set.filter((str) => str !== s.charAt(i++));
-      console.log(set);
     }
   }
   return ans;

@@ -1,14 +1,7 @@
 /**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-
-/**
  * @param {ListNode} head
  * @return {boolean}
+ * 设置快慢指针，判断两者是否会相遇
  */
 function hasCycle(head: any): boolean {
   let slow = head;
