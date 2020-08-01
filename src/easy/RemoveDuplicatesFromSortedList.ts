@@ -1,4 +1,4 @@
-import { ListNode } from './medium/AddTwoNumbers';
+import { ListNode } from '../medium/AddTwoNumbers';
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
   let curr = head;
@@ -11,9 +11,3 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
   }
   return head;
 }
-
-const l1 = new ListNode(
-  1,
-  new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3))))
-);
-console.log(deleteDuplicates(l1));
