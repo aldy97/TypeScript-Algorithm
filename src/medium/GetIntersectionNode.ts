@@ -1,5 +1,4 @@
-import { ListNode } from './medium/AddTwoNumbers';
-
+import { ListNode } from './AddTwoNumbers';
 function getIntersectionNode(
   headA: ListNode,
   headB: ListNode
