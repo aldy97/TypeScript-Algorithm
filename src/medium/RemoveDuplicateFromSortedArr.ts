@@ -10,7 +10,6 @@ function removeDuplicates2(nums: number[]): number {
       j++;
     }
   }
-  console.log(nums);
   return nums.length;
 }
 
