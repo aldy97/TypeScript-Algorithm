@@ -10,7 +10,6 @@ function threeSum(nums: number[]): number[][] {
   nums.sort((a, b) => {
     return a - b;
   });
-  console.log('nums: ' + nums);
   let result: number[][] = [];
   const size = nums.length;
   for (let i = 0; i < size; i++) {
