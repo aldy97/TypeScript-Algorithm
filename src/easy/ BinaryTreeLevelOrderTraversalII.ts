@@ -16,7 +16,7 @@ function levelOrder(node: TreeNode | null, d: number, level: number[] = []) {
   computes the largest root-to-leaf path,
   using 1-based counting.
 */
-function height(node: TreeNode | null) {
+export function height(node: TreeNode | null) {
   if (node == null) {
     /* base case */
     return 0;
