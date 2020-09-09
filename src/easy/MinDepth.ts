@@ -1,5 +1,4 @@
 import { TreeNode } from './IsSameTree';
-import { height } from './ BinaryTreeLevelOrderTraversalII';
 
 function minDepth(root: TreeNode | null): number {
   if (root === null) {
