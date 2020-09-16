@@ -4,7 +4,7 @@ enum Index {
   UNKNOWN,
 }
 
-//memo:bottom-up
+//dynamic prgramming:bottom-up
 function canJump1(nums: number[]): boolean {
   let memo = new Array(nums.length).fill(Index.UNKNOWN);
   memo[memo.length - 1] = Index.GOOD;
@@ -26,6 +26,7 @@ function canJump2(nums: number[]): boolean {
   let furthestJump = 0;
   for (let i = 0; i < size - 1; i++) {
     furthestJump = Math.max(furthestJump, i + nums[i]);
+    //当遇到0或者卡住的时候
     if (furthestJump <= i) return false;
   }
   return furthestJump >= size - 1;
