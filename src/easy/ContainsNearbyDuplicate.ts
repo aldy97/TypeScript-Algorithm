@@ -1,3 +1,4 @@
+// O(n) because constructing new Set takes O(n) to complete.
 function containsNearbyDuplicate(nums: number[], k: number): boolean {
   //key is the value, and value is its corresponding index
   let map: { [key: number]: number } = {};
