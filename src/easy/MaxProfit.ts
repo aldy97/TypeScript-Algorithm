@@ -1,5 +1,5 @@
 function maxProfit(prices: number[]): number {
-  let minPrice: number = Math.max(...prices);
+  let minPrice: number = Infinity;
   let maxProfit = 0;
   for (let i = 0; i < prices.length; i++) {
     if (minPrice > prices[i]) {
