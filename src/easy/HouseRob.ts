@@ -1,6 +1,7 @@
 //O(n) for both time and space complexity
 function rob(nums: number[]): number {
   const size = nums.length;
+
   //base cases:
   if (size === 1) {
     return nums[0];
@@ -21,5 +22,6 @@ function rob(nums: number[]): number {
       dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
     }
   }
+
   return dp[size - 1];
 }
