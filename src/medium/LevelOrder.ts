@@ -17,7 +17,7 @@ import {TreeNode} from '../easy/IsSameTree'
  * }
  */
 function levelOrder(root: TreeNode | null): number[][] {
-  const queue = [root] // initialize the queue with root
+  let queue = [root] // initialize the queue with root
   const levels = [] // declare output array
     
   while (queue.length !== 0) {
