@@ -32,10 +32,5 @@ function ladderLength(
     q = next;
     step++;
   }
-
   return 0;
 }
-
-console.log(
-  ladderLength('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog'])
-);
