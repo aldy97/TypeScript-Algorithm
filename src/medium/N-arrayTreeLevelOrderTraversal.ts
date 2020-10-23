@@ -12,7 +12,7 @@ function levelOrder(root: Node | null): number[][] {
     return [];
   }
   let results: number[][] = [];
-  let queue = [root];
+  let queue: Node[] = [root];
   while (queue.length !== 0) {
     const size = queue.length;
     const result: number[] = [];
