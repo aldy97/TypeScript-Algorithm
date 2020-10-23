@@ -1,19 +1,7 @@
 function uniquePathsWithObstacles(obstacleGrid: number[][]): number {
-  if (!obstacleGrid) {
-    return 1;
-  }
   //if the starting point is blocked, then no solution
   if (obstacleGrid[0][0] === 1) {
     return 0;
-  }
-  //if there is one row, return 0 when there is a block in the path; return 1 if there is no block in the path
-  if (obstacleGrid.length === 1) {
-    for (let i = 0; i < obstacleGrid[0].length; i++) {
-      if (obstacleGrid[0][i] === 1) {
-        return 0;
-      }
-    }
-    return 1;
   }
 
   //dynamic table initialization
