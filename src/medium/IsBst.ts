@@ -1,4 +1,6 @@
 import { TreeNode } from '../easy/IsSameTree';
+
+//one should keep both upper and lower limits for each node while traversing the tree, and compare the node value not with children values but with these limits.
 function isValidBST(root: TreeNode | null): boolean {
   function helper(
     root: TreeNode | null,
@@ -8,10 +10,7 @@ function isValidBST(root: TreeNode | null): boolean {
     if (!root) {
       return true;
     }
-    if (
-      (min !== null && root.val <= min) ||
-      (max !== null && root.val >= max)
-    ) {
+    if ((min && root.val <= min) || (max && root.val >= max)) {
       return false;
     }
     return (
