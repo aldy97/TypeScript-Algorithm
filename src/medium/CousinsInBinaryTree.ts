@@ -13,16 +13,13 @@ function isCousins(root: TreeNode | null, x: number, y: number): boolean {
         if ((curr.left.val === x && curr.right.val === y) ||
             (curr.left.val === y && curr.right.val === x)) {
           return false;
-        } else {
-          currLevel.add(curr.left.val);
-          currLevel.add(curr.right.val);
-          queue.push(curr.left);
-          queue.push(curr.right);
-        }
-      } else if (curr.left) {
+        } 
+      } 
+      if (curr.left) {
         currLevel.add(curr.left.val);
         queue.push(curr.left);
-      } else if (curr.right) {
+      } 
+      if (curr.right) {
         currLevel.add(curr.right.val);
         queue.push(curr.right);
       }
