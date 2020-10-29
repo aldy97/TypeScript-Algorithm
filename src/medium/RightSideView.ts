@@ -1,4 +1,4 @@
-import {TreeNode} from '../easy/IsSameTree';
+import { TreeNode } from '../easy/IsSameTree';
 function rightSideView(root: TreeNode | null): number[] {
   if (!root) {
     return [];
@@ -9,11 +9,11 @@ function rightSideView(root: TreeNode | null): number[] {
     let currLevel: number[] = [];
     const size = queue.length;
     for (let i = 0; i < size; i++) {
-      const curr = queue.shift() as TreeNode; 
+      const curr = queue.shift() as TreeNode;
       if (curr.left) {
         queue.push(curr.left);
         currLevel.push(curr.left.val);
-      } 
+      }
       if (curr.right) {
         queue.push(curr.right);
         currLevel.push(curr.right.val);
@@ -25,4 +25,4 @@ function rightSideView(root: TreeNode | null): number[] {
     }
   }
   return result;
-};
+}

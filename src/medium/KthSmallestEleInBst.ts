@@ -1,5 +1,4 @@
-import {TreeNode} from'../easy/IsSameTree';
-
+import { TreeNode } from '../easy/IsSameTree';
 function kthSmallest(root: TreeNode | null, k: number): number {
   if (!root || k === 0) {
     return -1;
@@ -22,4 +21,4 @@ function kthSmallest(root: TreeNode | null, k: number): number {
     }
   }
   return Math.max(...result);
-};
+}

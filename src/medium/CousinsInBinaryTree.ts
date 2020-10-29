@@ -1,4 +1,4 @@
-import {TreeNode} from '../easy/IsSameTree';
+import { TreeNode } from '../easy/IsSameTree';
 function isCousins(root: TreeNode | null, x: number, y: number): boolean {
   if (!root) {
     return false;
@@ -10,15 +10,17 @@ function isCousins(root: TreeNode | null, x: number, y: number): boolean {
     for (let i = 0; i < size; i++) {
       const curr = queue.shift() as TreeNode;
       if (curr.left && curr.right) {
-        if ((curr.left.val === x && curr.right.val === y) ||
-            (curr.left.val === y && curr.right.val === x)) {
+        if (
+          (curr.left.val === x && curr.right.val === y) ||
+          (curr.left.val === y && curr.right.val === x)
+        ) {
           return false;
-        } 
-      } 
+        }
+      }
       if (curr.left) {
         currLevel.add(curr.left.val);
         queue.push(curr.left);
-      } 
+      }
       if (curr.right) {
         currLevel.add(curr.right.val);
         queue.push(curr.right);
@@ -29,4 +31,4 @@ function isCousins(root: TreeNode | null, x: number, y: number): boolean {
     }
   }
   return false;
-};
+}
