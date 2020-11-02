@@ -2,7 +2,7 @@
 function setZeroes(matrix: number[][]): void {
   const height = matrix.length;
   const length = matrix[0].length;
-  const zeros = [];
+  const zeros: [number, number][] = [];
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < length; j++) {
       if (matrix[i][j] === 0) {
