@@ -1,9 +1,9 @@
+//backtraking solution, Time Complexity: O(N⋅2^N), Space complexity: O(n)
 function partition(s: string): string[][] {
   if (s.length === 0) {
     return [];
   }
   let results: string[][] = [];
-
   const n = s.length;
 
   function isPalindrome(s: string): boolean {
@@ -27,6 +27,7 @@ function partition(s: string): string[][] {
     if (curr === n) {
       results.push(result);
     } else {
+      //i tracks the index that we currently at in the given string
       for (let i = curr; i < n; i++) {
         const seg = s.slice(curr, i + 1);
         if (isPalindrome(seg)) {
