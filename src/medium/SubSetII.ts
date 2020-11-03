@@ -5,17 +5,20 @@ function subsetsWithDup(nums: number[]): number[][] {
 
   const n = nums.length;
   let result: number[][] = [];
-  nums.sort();
+  let buffer: number[] = [];
+  nums.sort((a, b) => a - b);
 
   function backtrack(buffer: number[], curr: number) {
-    result.push(buffer);
+    result.push([...buffer]);
     for (let i = curr; i < n; i++) {
-      buffer.push(nums[i]);
-      backtrack(buffer, i + 1);
-      buffer.pop();
+      if (i === curr || nums[i] !== nums[i - 1]) {
+        buffer.push(nums[i]);
+        backtrack(buffer, i + 1);
+        buffer.pop();
+      }
     }
   }
 
-  backtrack([], 0);
+  backtrack(buffer, 0);
   return result;
 }
