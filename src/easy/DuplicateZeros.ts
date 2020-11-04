@@ -14,6 +14,5 @@ function duplicateZeros(arr: number[]): void {
     }
     curr++;
   }
-  arr = arr.slice(0, n);
-  console.log(arr);
+  arr.splice(n);
 }
