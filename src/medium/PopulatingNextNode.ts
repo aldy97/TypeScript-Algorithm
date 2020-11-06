@@ -11,6 +11,7 @@ class Node3 {
   }
 }
 
+// Solution 1: level order traversal
 function connect(root: Node3 | null): Node3 | null {
   if (!root) {
     return null;
@@ -34,5 +35,25 @@ function connect(root: Node3 | null): Node3 | null {
     }
     currLevel[currLevel.length - 1].next = null;
   }
+  return root;
+}
+
+// Solution 2: recursion
+function connectTwoNodes(n1: Node3 | null, n2: Node3 | null): void {
+  if (!n1 || !n2) {
+    return;
+  }
+  n1.next = n2;
+  connectTwoNodes(n1.left, n1.right);
+  connectTwoNodes(n2.left, n2.right);
+  connectTwoNodes(n1.right, n2.left);
+}
+
+function connect2(root: Node3 | null): Node3 | null {
+  if (!root) {
+    return null;
+  }
+  root.next = null;
+  connectTwoNodes(root.left, root.right);
   return root;
 }
