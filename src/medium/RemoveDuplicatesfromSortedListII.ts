@@ -7,7 +7,9 @@ class ListNode {
   }
 }
 
+// Iteration
 function deleteDuplicates(head: ListNode | null): ListNode | null {
+  // base case:
   if (!head) {
     return null;
   }
@@ -16,11 +18,13 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
   let pre = dummy;
   let curr: ListNode | null = head;
   while (curr && curr.next) {
+    // checks whether curr has duplicates:
     let equal: boolean = false;
     while (curr.next && curr.val === curr.next.val) {
       equal = true;
       curr = curr.next;
     }
+    // skip all duplicates
     if (equal) {
       pre.next = curr.next;
     } else {
