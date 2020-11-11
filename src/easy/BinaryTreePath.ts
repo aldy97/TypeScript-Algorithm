@@ -1,4 +1,5 @@
 import { TreeNode } from './IsSameTree';
+// Time complexity: O(n)
 function binaryTreePaths(root: TreeNode | null): string[] {
   if (!root) {
     return [];

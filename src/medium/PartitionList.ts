@@ -1,5 +1,5 @@
 // Space: O(1); Time: O(n)
-function partition(head: ListNode | null, x: number): ListNode | null {
+function partitionList(head: ListNode | null, x: number): ListNode | null {
   // base case:
   if (!head) {
     return null;
