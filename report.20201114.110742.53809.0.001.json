@@ -1,0 +1,276 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20201114.110742.53809.0.001.json",
+    "dumpEventTime": "2020-11-14T11:07:42Z",
+    "dumpEventTimeStamp": "1605380862521",
+    "processId": 53809,
+    "cwd": "/Users/fengxiong/Desktop/git-repo/TypeScript-Algorithm",
+    "commandLine": [
+      "node",
+      "/Users/fengxiong/Desktop/git-repo/TypeScript-Algorithm/node_modules/.bin/ts-node",
+      "src/index.ts"
+    ],
+    "nodejsVersion": "v12.14.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "darwin",
+    "componentVersions": {
+      "node": "12.14.0",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0.tar.gz"
+    },
+    "osName": "Darwin",
+    "osRelease": "19.6.0",
+    "osVersion": "Darwin Kernel Version 19.6.0: Mon Aug 31 22:12:52 PDT 2020; root:xnu-6153.141.2~1/RELEASE_X86_64",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+        "speed": 2300,
+        "user": 35146590,
+        "nice": 0,
+        "sys": 56189910,
+        "idle": 118329920,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+        "speed": 2300,
+        "user": 12111710,
+        "nice": 0,
+        "sys": 12884840,
+        "idle": 184668070,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+        "speed": 2300,
+        "user": 31266140,
+        "nice": 0,
+        "sys": 32417610,
+        "idle": 145980870,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+        "speed": 2300,
+        "user": 10239760,
+        "nice": 0,
+        "sys": 10725320,
+        "idle": 188699540,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::1",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 1
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "8c:85:90:97:75:23",
+        "address": "fe80::499:6a3a:d5c6:2eb4",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 4
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "8c:85:90:97:75:23",
+        "address": "192.168.0.23",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "8c:85:90:97:75:23",
+        "address": "fd00:ac20:2e1c:3ae2:ac:da64:8f1b:c69e",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "8c:85:90:97:75:23",
+        "address": "fd00:ac20:2e1c:3ae2:a886:a877:b2d5:ebbe",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "awdl0",
+        "internal": false,
+        "mac": "f2:9b:8d:d0:ee:02",
+        "address": "fe80::f09b:8dff:fed0:ee02",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 9
+      },
+      {
+        "name": "llw0",
+        "internal": false,
+        "mac": "f2:9b:8d:d0:ee:02",
+        "address": "fe80::f09b:8dff:fed0:ee02",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 10
+      },
+      {
+        "name": "utun0",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::152f:1d1a:4fb9:311",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 11
+      },
+      {
+        "name": "utun1",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::9617:b0a4:5d2:8c26",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 12
+      },
+      {
+        "name": "utun2",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::7a11:f7e2:6c3:3099",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 13
+      },
+      {
+        "name": "utun3",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::b0ce:3cde:49bf:fdc",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 14
+      },
+      {
+        "name": "utun4",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::d23f:c300:52b7:760c",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 15
+      },
+      {
+        "name": "utun5",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::7d00:6691:4a8f:6956",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 16
+      }
+    ],
+    "host": "FengdeMacBook-Pro.local"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x000000010014db86",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, v8::Local<v8::String>) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010007eb13",
+      "symbol": "node::OnFatalError(char const*, char const*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000100176337",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001001762d3",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001002fa485",
+      "symbol": "v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001002fbb54",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001002f8a27",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001002f6a0d",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000100302124",
+      "symbol": "v8::internal::Heap::AllocateRawWithLightRetry(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000010030219f",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001002ced97",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000001005f884d",

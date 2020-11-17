@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:build": "tsc -w",
-    "dev:start": "nodemon node ./build/index.js",
-    "dev": "tsc && concurrently npm:dev:*"
+    "dev": "nodemon -L --exec ts-node src/index.ts"
   },
   "nodemonConfig": {
     "ignore": [

@@ -1,33 +1,33 @@
-function uniqBy(a: number[][], key: Function) {
-  var index: any = [];
-  return a.filter(function (item) {
-    var k = key(item);
-    return index.indexOf(k) >= 0 ? false : index.push(k);
-  });
+function twoSum(nums: number[], target: number): number[][] {
+  let res: number[][] = [];
+  let i = 0;
+  let j = nums.length - 1;
+  while (i < j) {
+    if (nums[i] + nums[j] === target) {
+      res.push([nums[i], nums[j], -target]);
+    } else if (nums[i] + nums[j] < target) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+  return res;
 }
 
 function threeSum(nums: number[]): number[][] {
-  nums.sort((a, b) => {
-    return a - b;
-  });
-  let result: number[][] = [];
-  const size = nums.length;
-  for (let i = 0; i < size; i++) {
-    let p1 = i + 1;
-    let p2 = size - 1;
-    const newTarget = -nums[i];
-    while (p1 < p2) {
-      const sum = nums[p1] + nums[p2];
-      if (sum > newTarget) {
-        p2--;
-      } else if (sum < newTarget) {
-        p1++;
-      } else {
-        result.push([nums[i], nums[p1], nums[p2]]);
-        p1++;
-        p2--;
-      }
+  if (nums.length < 3) {
+    return [];
+  }
+  const sortedNums = nums.sort((a, b) => a - b);
+  let res: number[][] = [];
+  for (let i = 0; i < nums.length - 2; i++) {
+    const subRes = twoSum(sortedNums.slice(i + 1), 0 - sortedNums[i]);
+    if (subRes.length !== 0) {
+      res.push(...subRes);
+    }
+    while (i < nums.length - 2 && nums[i] == nums[i + 1]) {
+      i++;
     }
   }
-  return uniqBy(result, JSON.stringify);
+  return res;
 }
