@@ -1,45 +1,67 @@
-function updateMatrix(matrix: number[][]): number[][] {
-  const rowLen = matrix.length,
-    colLen = matrix[0].length;
-  const dist = new Array(rowLen)
-    .fill([])
-    .map(() => new Array(colLen).fill(Infinity));
-  const getDist = (row: number, col: number, [rd, cd]: any) =>
-    Math.min(dist[row][col], dist[row + rd][col + cd] + 1);
-  // top, left, down, right
-  const dir = [
-    [0, -1],
-    [-1, 0],
-    [0, 1],
-    [1, 0],
-  ];
-  // check left & top
-  for (let i = 0; i < rowLen; i++) {
-    for (let j = 0; j < colLen; j++) {
-      if (!matrix[i][j]) dist[i][j] = 0;
-      else {
-        if (!i && !j) continue;
-        if (i > 0 && j > 0) {
-          dist[i][j] = Math.min(getDist(i, j, dir[0]), getDist(i, j, dir[1]));
-        } else {
-          dist[i][j] = i ? getDist(i, j, dir[1]) : getDist(i, j, dir[0]);
-        }
-      }
-    }
-  }
-  // check right & bottom
-  for (let i = rowLen - 1; i >= 0; i--) {
-    for (let j = colLen - 1; j >= 0; j--) {
-      if (matrix[i][j]) {
-        if (i === rowLen - 1 && j === colLen - 1) continue;
-        if (i < rowLen - 1 && j < colLen - 1) {
-          dist[i][j] = Math.min(getDist(i, j, dir[2]), getDist(i, j, dir[3]));
-        } else {
-          dist[i][j] =
-            i < rowLen - 1 ? getDist(i, j, dir[3]) : getDist(i, j, dir[2]);
-        }
-      }
-    }
-  }
-  return dist;
-}
+// function searchSurround(
+//   currBoard: string[][],
+//   word: string,
+//   i: number,
+//   j: number
+// ): boolean {
+//   // console.log("board:", board);
+//   // console.log("word: ", word);
+//   if (word.length === 0) {
+//     return true;
+//   }
+//   const height = currBoard.length;
+//   const width = currBoard[0].length;
+
+//   // boundary check
+//   if (i < 0 || i === height || j < 0 || j === width) {
+//     return false;
+//   }
+//   if (word[0] !== currBoard[i][j]) {
+//     return false;
+//   } else {
+//     currBoard[i][j] = " ";
+//     word = word.slice(1);
+//     return (
+//       searchSurround(currBoard, word, i + 1, j) ||
+//       searchSurround(currBoard, word, i - 1, j) ||
+//       searchSurround(currBoard, word, i, j + 1) ||
+//       searchSurround(currBoard, word, i, j - 1)
+//     );
+//   }
+// }
+
+// // TODO: one weird thing, change param in helper affects the one being passed
+// function exist(board: string[][], word: string): boolean {
+//   const height = board.length;
+//   const width = board[0].length;
+
+//   //Convert to uppercases for both board and string:
+//   const uppercaseWord = word.toUpperCase();
+//   for (let i = 0; i < height; i++) {
+//     for (let j = 0; j < width; j++) {
+//       board[i][j] = board[i][j].toUpperCase();
+//     }
+//   }
+
+//   for (let i = 0; i < height; i++) {
+//     for (let j = 0; j < width; j++) {
+//       const result = searchSurround(board, uppercaseWord, i, j);
+//       if (result) {
+//         return true;
+//       }
+//     }
+//   }
+
+//   return false;
+// }
+
+// console.log(
+//   exist(
+//     [
+//       ["C", "A", "A"],
+//       ["A", "A", "A"],
+//       ["B", "C", "D"],
+//     ],
+//     "AAB"
+//   )
+// );
