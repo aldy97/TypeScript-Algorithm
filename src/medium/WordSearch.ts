@@ -4,8 +4,6 @@ function searchSurround(
   i: number,
   j: number
 ): boolean {
-  // console.log("board:", board);
-  // console.log("word: ", word);
   if (word.length === 0) {
     return true;
   }
@@ -20,6 +18,7 @@ function searchSurround(
     return false;
   } else {
     currBoard[i][j] = " ";
+    console.log(currBoard);
     word = word.slice(1);
     return (
       searchSurround(currBoard, word, i + 1, j) ||
@@ -30,7 +29,22 @@ function searchSurround(
   }
 }
 
-// TODO: one weird thing, change param in helper affects the one being passed
+function getCopyBoard(board: string[][]): string[][] {
+  const height = board.length;
+  const width = board[0].length;
+  let copyBoard: string[][] = [];
+  for (let i = 0; i < height; i++) {
+    copyBoard.push(new Array(width).fill("*"));
+  }
+  for (let i = 0; i < height; i++) {
+    for (let j = 0; j < width; j++) {
+      copyBoard[i][j] = board[i][j];
+    }
+  }
+  return copyBoard;
+}
+
+// TODO: board should be not affected
 function exist(board: string[][], word: string): boolean {
   const height = board.length;
   const width = board[0].length;
@@ -45,7 +59,8 @@ function exist(board: string[][], word: string): boolean {
 
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
-      const result = searchSurround(board, uppercaseWord, i, j);
+      const copyBoard = getCopyBoard(board);
+      const result = searchSurround(copyBoard, uppercaseWord, i, j);
       if (result) {
         return true;
       }
@@ -54,14 +69,3 @@ function exist(board: string[][], word: string): boolean {
 
   return false;
 }
-
-console.log(
-  exist(
-    [
-      ["C", "A", "A"],
-      ["A", "A", "A"],
-      ["B", "C", "D"],
-    ],
-    "AAB"
-  )
-);
