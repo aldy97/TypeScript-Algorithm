@@ -1,3 +1,4 @@
+// Time complexity: O(nlogn), Space: O(n) for storing result
 function merge(intervals: number[][]): number[][] {
   if (intervals.length === 0 || intervals.length === 1) {
     return intervals;
