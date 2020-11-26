@@ -1,33 +1,35 @@
-function twoSum(nums: number[], target: number): number[][] {
-  let res: number[][] = [];
-  let i = 0;
-  let j = nums.length - 1;
-  while (i < j) {
-    if (nums[i] + nums[j] === target) {
-      res.push([nums[i], nums[j], -target]);
-    } else if (nums[i] + nums[j] < target) {
-      i++;
-    } else {
-      j++;
-    }
-  }
-  return res;
-}
-
 function threeSum(nums: number[]): number[][] {
-  if (nums.length < 3) {
-    return [];
-  }
-  const sortedNums = nums.sort((a, b) => a - b);
-  let res: number[][] = [];
+  const results: number[][] = [];
+  if (nums.length < 3) return results;
+  nums = nums.sort((a, b) => a - b);
+  let target = 0;
+
   for (let i = 0; i < nums.length - 2; i++) {
-    const subRes = twoSum(sortedNums.slice(i + 1), 0 - sortedNums[i]);
-    if (subRes.length !== 0) {
-      res.push(...subRes);
-    }
-    while (i < nums.length - 2 && nums[i] == nums[i + 1]) {
-      i++;
+    if (nums[i] > target) break;
+
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+    let j = i + 1;
+
+    let k = nums.length - 1;
+
+    while (j < k) {
+      let sum = nums[i] + nums[j] + nums[k];
+
+      if (sum === target) {
+        results.push([nums[i], nums[j], nums[k]]);
+
+        while (nums[j] === nums[j + 1]) j++;
+        while (nums[k] === nums[k - 1]) k--;
+
+        j++;
+        k--;
+      } else if (sum < target) {
+        j++;
+      } else {
+        k--;
+      }
     }
   }
-  return res;
+
+  return results;
 }
