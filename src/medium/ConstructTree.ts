@@ -30,7 +30,10 @@ function buildTreeHelper(
   const rootVal = preOrder[p_start];
   let root = new TreeNode(rootVal);
   const i_root_index = map.get(rootVal) as number;
+  // numbers of ele in the left subtree
   const leftNum = i_root_index - i_start;
+  // recursively chaging start and end for both pre and in, start is inclusive and end is exclusive
+  // the range from start to end in both preorder and inorder represents all ele in the left or all ele in the right
   root.left = buildTreeHelper(
     preOrder,
     p_start + 1,
