@@ -1,67 +1,46 @@
-function searchSurround(
-  currBoard: string[][],
-  word: string,
-  i: number,
-  j: number
-): boolean {
-  if (word.length === 0) {
-    return true;
-  }
-  const height = currBoard.length;
-  const width = currBoard[0].length;
-
-  // boundary check
-  if (i < 0 || i === height || j < 0 || j === width) {
-    return false;
-  }
-  if (word[0] !== currBoard[i][j]) {
-    return false;
-  } else {
-    currBoard[i][j] = " ";
-    console.log(currBoard);
-    word = word.slice(1);
-    return (
-      searchSurround(currBoard, word, i + 1, j) ||
-      searchSurround(currBoard, word, i - 1, j) ||
-      searchSurround(currBoard, word, i, j + 1) ||
-      searchSurround(currBoard, word, i, j - 1)
-    );
-  }
-}
-
-function getCopyBoard(board: string[][]): string[][] {
-  const height = board.length;
-  const width = board[0].length;
-  let copyBoard: string[][] = [];
-  for (let i = 0; i < height; i++) {
-    copyBoard.push(new Array(width).fill("*"));
-  }
-  for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
-      copyBoard[i][j] = board[i][j];
-    }
-  }
-  return copyBoard;
-}
-
-// TODO: board should be not affected
 function exist(board: string[][], word: string): boolean {
-  const height = board.length;
-  const width = board[0].length;
-
-  //Convert to uppercases for both board and string:
-  const uppercaseWord = word.toUpperCase();
-  for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
-      board[i][j] = board[i][j].toUpperCase();
-    }
+  const row = board.length;
+  const col = board[0].length;
+  if (row === 0) {
+    return false;
   }
 
-  for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
-      const copyBoard = getCopyBoard(board);
-      const result = searchSurround(copyBoard, uppercaseWord, i, j);
-      if (result) {
+  function backtrack(
+    board: string[][],
+    row: number,
+    col: number,
+    index: number
+  ) {
+    // bound check
+    if (row < 0 || row >= board.length || col < 0 || col >= board[0].length) {
+      return false;
+    }
+    // word check
+    if (board[row][col] !== word[index]) {
+      return false;
+    }
+    if (index === word.length - 1) {
+      return true;
+    }
+
+    const temp = board[row][col];
+    board[row][col] = "$";
+
+    const up = backtrack(board, row - 1, col, index + 1);
+    const down = backtrack(board, row + 1, col, index + 1);
+    const left = backtrack(board, row, col - 1, index + 1);
+    const right = backtrack(board, row, col + 1, index + 1);
+    if (up || down || left || right) {
+      return true;
+    }
+    // restore value after attemp failed
+    board[row][col] = temp;
+    return false;
+  }
+
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      if (backtrack(board, i, j, 0)) {
         return true;
       }
     }
