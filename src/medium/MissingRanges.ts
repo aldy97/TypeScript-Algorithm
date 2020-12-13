@@ -11,9 +11,9 @@ function findMissingRanges(
     if (!numSet.has(i) && nums[pointer] !== undefined) {
       ans.push([i, nums[pointer] - 1]);
       i = nums[pointer];
-    } else if (!numSet.has(i) && nums[pointer] === undefined) {
+    } else if (!numSet.has(i)) {
       ans.push([i, upper]);
-      i = upper;
+      break;
     }
     pointer++;
   }
