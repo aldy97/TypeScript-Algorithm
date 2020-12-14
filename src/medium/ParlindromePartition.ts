@@ -33,6 +33,7 @@ function partition(s: string): string[][] {
         if (isPalindrome(seg)) {
           backtrack([...result, seg], i + 1);
         }
+        //no need for curr.pop(), because we are certain the curr is always correct and will make it to the end
       }
     }
   }
