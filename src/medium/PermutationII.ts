@@ -1,3 +1,4 @@
+// Consider unique number as option at each step rather than all numbers in nums
 function permuteUnique(nums: number[]): number[][] {
   if (nums.length === 0) {
     return [];
