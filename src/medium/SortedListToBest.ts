@@ -1,5 +1,5 @@
 import { TreeNode } from "../easy/IsSameTree";
-
+// 不仅找到linked list的中点，且同时会将前半部分和后半部分分开
 function findMiddleEle(head: ListNode): ListNode {
   let prev: ListNode | null = null;
   let slow: ListNode = head;
