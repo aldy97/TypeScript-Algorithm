@@ -8,12 +8,20 @@ class ListNode {
 }
 
 // Time: O(n), Space: O(n)
+// Recursion
 function swapPairs(head: ListNode | null): ListNode | null {
+  // If the list has no node or has only one node left.
   if (!head || !head.next) {
-    return head;
+    return null;
   }
-  let n = head.next;
-  head.next = swapPairs(head.next.next);
-  n.next = head;
-  return n;
+
+  // Nodes to be swapped
+  let first = head;
+  let second = head.next;
+
+  // Swapping
+  first.next = swapPairs(second.next);
+  second.next = first;
+
+  return second;
 }
