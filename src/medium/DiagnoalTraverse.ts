@@ -1,5 +1,5 @@
 // Time: O(n * m), Space: O(min(n, m))
-// All ele on the same diagonal have the same sum of its x-index and y-index
+// Key: all ele on the same diagonal must have the same sum of their x-index and y-index
 function findDiagonalOrder(matrix: number[][]): number[] {
   // base case:
   if (matrix.length === 0) {
