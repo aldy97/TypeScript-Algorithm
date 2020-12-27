@@ -9,13 +9,13 @@ function numDecodings(s: string): number {
 
   for (let i = 2; i <= s.length; i++) {
     // last one digit
-    const a = Number(s.slice(i - 1, i));
+    const a = parseInt(s.slice(i - 1, i));
     if (a >= 1 && a <= 9) {
       dp[i] += dp[i - 1];
     }
 
     // last two digits
-    const b = Number(s.slice(i - 2, i));
+    const b = parseInt(s.slice(i - 2, i));
     if (b >= 10 && b <= 26) {
       dp[i] += dp[i - 2];
     }
