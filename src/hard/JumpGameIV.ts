@@ -1,4 +1,4 @@
-// Time limite exceed solution
+// MY first attempt: Time limit exceeded
 function minJumpsTLE(arr: number[]): number {
   if (arr.length === 1) {
     return 0;
@@ -44,8 +44,8 @@ function minJumpsTLE(arr: number[]): number {
   return minStep;
 }
 
-// Time and Space: O(n)
-function minJumps(arr: number[]): number {
+// BFS: Time and Space: O(n)
+function minJumpsBFS(arr: number[]): number {
   if (arr.length === 1) return 0;
   const sameValIdx = new Map<number, number[]>();
   for (let i = arr.length - 1; i >= 0; i--) {
