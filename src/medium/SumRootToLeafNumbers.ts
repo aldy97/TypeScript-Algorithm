@@ -1,7 +1,8 @@
 import { TreeNode } from "../easy/IsSameTree";
-// DFS: Time and Space: O(n)
+// Time: O(n), since one has to visit each node.
+// Space: O(H), up to O(H) to keep the recursion stack, where H is a tree height.
 function sumNumbers(root: TreeNode | null): number {
-  // base case
+  // base case:
   if (!root) return 0;
   let ans = 0;
 
