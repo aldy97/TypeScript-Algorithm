@@ -1,19 +1,27 @@
-function countArrangement(N: number): number {
-  let ans = 0;
+// Backtracking
+// Time: O(p), where p is number of permutations
+// Space: O(n), where n is number of helper calls
+function countArrangement(n: number): number {
+  let res = 0;
 
-  function backtrack(curr: number[], pos: number): void {
-    if (curr.length === N) {
-      ans++;
-    } else {
-      const set = new Set<number>(curr);
-      for (let i = 1; i <= N; i++) {
-        if (!set.has(i) && (pos % i === 0 || i % pos === 0)) {
-          backtrack([...curr, i], pos + 1);
-        }
+  const helper = (num: number[], index: number): void => {
+    if (num[index - 1] % index !== 0 && index % num[index - 1] !== 0) {
+      return;
+    }
+    if (index === n) {
+      res++;
+      return;
+    }
+    for (let i = 1; i <= n; i++) {
+      if (!num.includes(i)) {
+        helper([...num, i], index + 1);
       }
     }
+  };
+
+  for (let i = 1; i <= n; i++) {
+    helper([i], 1);
   }
-  // 1-index
-  backtrack([], 1);
-  return ans;
+
+  return res;
 }
