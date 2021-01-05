@@ -7,7 +7,9 @@ export class ListNode {
   }
 }
 
-// Iteration
+// Iteration: two pointers
+// Time: O(n)
+// Space: O(1)
 function deleteDuplicates(head: ListNode | null): ListNode | null {
   // base case:
   if (!head) {
@@ -33,4 +35,25 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
     curr = curr.next;
   }
   return dummy.next;
+}
+
+// Recursion
+// Time: O(n)
+// Space: O(1n)
+function deleteDuplicates2(head: ListNode | null): ListNode | null {
+  // base case:
+  if (!head) {
+    return null;
+  }
+
+  if (head.next && head.val === head.next.val) {
+    while (head.next && head.val === head.next.val) {
+      head = head.next;
+    }
+    return deleteDuplicates2(head.next);
+  } else {
+    head.next = deleteDuplicates2(head.next);
+  }
+
+  return head;
 }
