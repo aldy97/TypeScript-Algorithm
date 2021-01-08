@@ -1,18 +1,18 @@
-class Node1 {
+export default class Node1 {
   val: number;
-  children: Node[];
+  children: Node1[];
   constructor(val?: number) {
     this.val = val === undefined ? 0 : val;
     this.children = [];
   }
 }
 
-function levelOrder(root: Node | null): number[][] {
+function levelOrder(root: Node1 | null): number[][] {
   if (!root) {
     return [];
   }
   let results: number[][] = [];
-  let queue: Node[] = [root];
+  let queue: Node1[] = [root];
   while (queue.length !== 0) {
     const size = queue.length;
     const result: number[] = [];
