@@ -1,36 +1,45 @@
-function getDifference(A: string, B: string) {
-  let count = 0;
-  for (let i = 0; i < A.length; i++) {
-    if (A[i] !== B[i]) {
-      count++;
+// helper func
+function differByOne(s1: string, s2: string): boolean {
+  let diff = 0;
+  for (let i = 0; i < s1.length; i++) {
+    if (s1[i] !== s2[i]) {
+      diff++;
+      if (diff === 2) {
+        return false;
+      }
     }
   }
-  return count;
+  return true;
 }
 
+// BFS: it is asking for the min steps
+// Space and Time: O(m^2 * n), where m is word length and n is number of words in dic
 function ladderLength(
   beginWord: string,
   endWord: string,
   wordList: string[]
 ): number {
-  const dict = new Set(wordList);
-  let step = 1;
-  let q = [beginWord];
+  const dic = new Set<string>(wordList);
+  // beginWord is not equal to endWord, otherwise it would be set to 0
+  let steps = 1;
+  let queue = [beginWord];
 
-  while (q.length) {
-    const next: any = [];
-    for (let w of q) {
-      if (w === endWord) return step;
-
-      for (let word of dict) {
-        if (getDifference(word, w) === 1) {
-          next.push(word);
-          dict.delete(word);
+  while (queue.length) {
+    const num = queue.length;
+    for (let i = 0; i < num; i++) {
+      const curr = queue.shift() as string;
+      if (curr === endWord) {
+        return steps;
+      }
+      for (const word of dic) {
+        if (differByOne(curr, word)) {
+          dic.delete(word);
+          queue.push(word);
         }
       }
     }
-    q = next;
-    step++;
+    steps++;
   }
+
   return 0;
 }
