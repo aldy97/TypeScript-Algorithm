@@ -7,27 +7,34 @@ export class ListNode {
   }
 }
 
-function addTwoNumbers(
-  l1: ListNode | null,
-  l2: ListNode | null
-): ListNode | null {
-  let dummyHead = new ListNode(0);
+// Time and Space: O(max(m, n)), where m and n are length of l1 and l2 respectively
+function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+  let dummy = new ListNode();
   let p1 = l1;
   let p2 = l2;
-  let curr = dummyHead;
+  let curr = dummy;
   let carry = 0;
-  while (p1 !== null || p2 !== null) {
-    let x = p1 != null ? p1.val : 0;
-    let y = p2 != null ? p2.val : 0;
-    let sum = carry + x + y;
-    carry = sum / 10 >= 1 ? 1 : 0;
+
+  while (p1 || p2) {
+    const x = p1 ? p1.val : 0;
+    const y = p2 ? p2.val : 0;
+    const sum = x + y + carry;
+    carry = sum >= 10 ? 1 : 0;
     curr.next = new ListNode(sum % 10);
     curr = curr.next;
-    if (p1 !== null) p1 = p1.next;
-    if (p2 !== null) p2 = p2.next;
+
+    if (p1) {
+      p1 = p1.next;
+    }
+    if (p2) {
+      p2 = p2.next;
+    }
   }
+
+  // check carry before finish
   if (carry > 0) {
     curr.next = new ListNode(carry);
   }
-  return dummyHead.next;
+
+  return dummy.next;
 }
