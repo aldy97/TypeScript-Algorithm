@@ -1,37 +1,19 @@
-//helper: checks whether the string is an open or a closing parentheses
-const isOpen: (s: string) => boolean = (s: string) => {
-  if (s === '{' || s === '[' || s === '(') {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-//helper: checks whether the closing parentheses matches with the top string in the stack
-const isMatch: (topElement: string, s: string) => boolean = (
-  topElement: string,
-  s: string
-) => {
-  if (s === '}') {
-    return topElement === '{';
-  } else if (s === ']') {
-    return topElement === '[';
-  } else return topElement === '(';
-};
-
+// Insight: iterate s and use stack to store corresponding closing parentheses when seeing opening parentheses
+// If seeing a closing, check whether the top is identical to it.
+// Time and Space: O(n)
 function isValid(s: string): boolean {
-  if (s === '') {
-    return true;
-  }
-  let stack: string[] = [];
+  let map: { [s: string]: string } = { "(": ")", "{": "}", "[": "]" };
+  let stack = [];
+
   for (let i = 0; i < s.length; i++) {
-    if (isOpen(s[i])) {
-      stack.push(s[i]);
-    } else if (isMatch(stack[stack.length - 1], s[i])) {
-      stack.pop();
-    } else {
+    const c = s[i];
+    if (map[c]) {
+      stack.push(map[c]);
+    } else if (c !== stack.pop()) {
       return false;
     }
   }
-  return stack.length === 0 ? true : false;
+
+  // return true when the stack is empty
+  return !stack.length;
 }
