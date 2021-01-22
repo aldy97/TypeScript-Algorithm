@@ -5,6 +5,7 @@ function expandAroundCenter(s: string, left: number, right: number): string {
     right++;
   }
 
+  // second param: right - left + 1 - 2 = right - left - 1, which is total length of the substr
   return s.substr(left + 1, right - left - 1);
 }
 
