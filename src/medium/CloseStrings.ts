@@ -1,4 +1,6 @@
-// Time: O(nlogn)
+// Hint 1: Operation 1 allows you to freely reorder the string.
+// Hint 2: Operation 2 allows you to freely reassign the letters' frequencies.
+// Time: O(n)
 // Space: O(1)
 function closeStrings(word1: string, word2: string): boolean {
   if (word1.length !== word2.length) return false;
