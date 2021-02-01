@@ -1,3 +1,4 @@
+// Insights: `k -= n` prevents the case when we too greedy: k < n
 // Time: O(n)
 // Space: O(1)
 function getSmallestString(n: number, k: number): string {
@@ -8,5 +9,6 @@ function getSmallestString(n: number, k: number): string {
     arr[--n] += Math.min(k, 25);
     k -= Math.min(k, 25);
   }
+
   return arr.reduce((acc, cur) => acc + String.fromCharCode(cur + 96), "");
 }
