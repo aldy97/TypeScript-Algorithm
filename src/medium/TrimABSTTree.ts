@@ -1,5 +1,4 @@
 import { TreeNode } from "../easy/IsSameTree";
-
 // Inights: when a node's val is not valid, then one of its chilren is not valid either
 // Time: O(n)
 // Space: O(n), due to recursiveness

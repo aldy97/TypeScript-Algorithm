@@ -1,18 +1,21 @@
-/**
- * @param {ListNode} head
- * @return {boolean}
- * 设置快慢指针(慢指针每次移动一个node，快指针每次移动两个node)，判断两者是否会相遇
- */
-function hasCycle(head: any): boolean {
-  let slow = head;
-  let fast = head;
-  //只有当cycle不存在的时候while循环才会terminate
-  while (fast && fast.next !== null) {
-    slow = slow.next;
-    fast = fast.next.next;
-    if (slow === fast) {
+// Done in daily chanllenge on Feb 03, 2021
+// Insights: if there is cycle, the slow will encouter the fast
+// Time: O(n)
+// Space: O(1)
+function hasCycle(head: ListNode | null): boolean {
+  if (!head) return false;
+  let slow: any = head;
+  let fast = head.next;
+  while (fast) {
+    if (slow.val === fast.val) {
       return true;
     }
+    slow = slow.next;
+    fast = fast.next;
+    if (fast && fast.next) {
+      fast = fast.next;
+    }
   }
+
   return false;
 }
