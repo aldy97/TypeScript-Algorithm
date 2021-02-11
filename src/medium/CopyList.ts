@@ -9,21 +9,29 @@ class Node2 {
   }
 }
 
+// Space: O(n)
+// Time: O(n)
 function copyRandomList(head: Node2 | null): Node2 | null {
+  // base case:
   if (!head) {
     return null;
   }
+
   let clone = new Map<Node2, Node2>();
   let n: Node2 | null = head;
+
   while (n) {
     clone.set(n, new Node2(n.val));
     n = n.next;
   }
+
   n = head;
+
   while (n) {
     (clone.get(n) as Node2).next = clone.get(n.next as Node2) || null;
     (clone.get(n) as Node2).random = clone.get(n.random as Node2) || null;
     n = n.next;
   }
+
   return clone.get(head) as Node2;
 }
