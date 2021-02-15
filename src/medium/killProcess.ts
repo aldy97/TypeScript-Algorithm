@@ -7,6 +7,7 @@ function killProcessDFS(pid: number[], ppid: number[], kill: number): number[] {
   for (let i = 0; i < pid.length; i++) {
     const curr = map.get(ppid[i]) || [];
     curr.push(pid[i]);
+    // caution: map.set(ppid[i], [...curr, pid[i]]) would cause TLE because it would be O(n) instead of O(1)
     map.set(ppid[i], curr);
   }
 
@@ -34,6 +35,7 @@ function killProcessBFS(pid: number[], ppid: number[], kill: number): number[] {
   for (let i = 0; i < pid.length; i++) {
     const curr = map.get(ppid[i]) || [];
     curr.push(pid[i]);
+    // caution: map.set(ppid[i], [...curr, pid[i]]) would cause TLE because it would be O(n) instead of O(1)
     map.set(ppid[i], curr);
   }
 
