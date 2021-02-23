@@ -1,3 +1,5 @@
+// Insights: when A knows B, then B is candidate and A is for sure NOT a celebrity.
+// If A does not know B, then A is a candidate and B is for sure NOT a celebrity
 // Time: O(n)
 // Space: O(1)
 var solution = function (knows: any) {
