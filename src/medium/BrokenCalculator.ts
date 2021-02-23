@@ -4,6 +4,7 @@
 function brokenCalc(X: number, Y: number): number {
   let ans = 0;
   while (Y > X) {
+    // we first need to make Y an even number
     if (Y % 2 == 1) {
       Y++;
     } else {
