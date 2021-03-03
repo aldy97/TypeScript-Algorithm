@@ -1,14 +1,14 @@
+// Insights: Gaussian's formula
+// Time: O(n)
+// Space: O(1)
 function missingNumber(nums: number[]): number {
-  const max = Math.max(...nums);
-  const desire: number[] = [];
-  for (let i = 0; i <= max; i++) {
-    desire.push(i);
+  let sum = 0;
+  const n = nums.length;
+  for (let i = 0; i < n; i++) {
+    sum += nums[i];
   }
-  const set = new Set(nums);
-  for (let num of desire) {
-    if (!set.has(num)) {
-      return num;
-    }
-  }
-  return max + 1;
+
+  const total = (n * (n + 1)) / 2;
+
+  return total - sum;
 }
