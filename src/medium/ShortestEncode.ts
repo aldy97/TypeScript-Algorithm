@@ -1,3 +1,5 @@
+// Time: Sum of w^2
+// Space: Sum of w
 function minimumLengthEncoding(words: string[]): number {
   const set = new Set<string>(words);
   for (const w of words) {
