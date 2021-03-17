@@ -23,8 +23,7 @@ function str2tree(s: string): TreeNode | null {
     if (s[i] === "(") {
       openings++;
     } else if (s[i] === ")") {
-      openings--;
-      if (openings === 0) {
+      if (--openings === 0) {
         const leftSub = s.slice(endOfFirstNum + 1, i);
         const rightSub = s.slice(i + 2, s.length - 1);
 
