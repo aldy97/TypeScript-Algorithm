@@ -34,7 +34,7 @@ function swapNodesOnePass(head: ListNode | null, k: number): ListNode | null {
 function swapNodesTwoPass(head: ListNode | null, k: number): ListNode | null {
   if (!head) return null;
   const arr: number[] = [];
-  let p = head;
+  let p: ListNode | null = head;
   while (p) {
     arr.push(p.val);
     p = p.next;
