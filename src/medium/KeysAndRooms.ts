@@ -5,28 +5,22 @@ function canVisitAllRooms(rooms: number[][]): boolean {
   if (rooms.length < 2) return true;
 
   let visited = new Set<number>([0]);
-  let keys = [...rooms[0]];
+  let keys = rooms[0];
 
   while (keys.length) {
-    const key = keys.pop();
-    if (!key) {
-      return false;
-    } else {
-      visited.add(key);
-      const accessible = rooms[key];
-      for (const room of accessible) {
-        if (!visited.has(room)) {
-          keys.push(room);
-        }
-      }
+    const key = keys.pop() as number;
+    if (visited.has(key)) continue;
 
-      if (visited.size === rooms.length) {
-        return true;
+    visited.add(key);
+    const accessible = rooms[key];
+    for (const room of accessible) {
+      if (!visited.has(room)) {
+        keys.push(room);
       }
     }
   }
 
-  return false;
+  return visited.size === rooms.length;
 }
 
 // Written by others
