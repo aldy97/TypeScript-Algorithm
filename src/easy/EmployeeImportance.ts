@@ -1,8 +1,11 @@
+// Time: O(n)
+// Space: O(n)
 interface Employee {
   id: number;
   importance: number;
   subordinates: number[];
 }
+
 function getImportance(employees: Employee[], id: number): number {
   if (employees.length == 0) return 0;
 
