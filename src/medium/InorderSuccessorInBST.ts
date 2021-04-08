@@ -21,6 +21,7 @@ function inorderSuccessor(
   return findNode(succVal, root);
 }
 
+// Time: O(n)
 const inorder = (vals: number[], root: TreeNode | null): void => {
   if (!root) return;
 
@@ -29,6 +30,7 @@ const inorder = (vals: number[], root: TreeNode | null): void => {
   inorder(vals, root.right);
 };
 
+// Time: O(h)
 const findNode = (val: number, root: TreeNode | null): TreeNode | null => {
   if (!root) return null;
   if (root.val === val) {
@@ -40,3 +42,25 @@ const findNode = (val: number, root: TreeNode | null): TreeNode | null => {
     return findNode(val, root.left);
   }
 };
+
+// Insights: if current node is smaller or equal to p.val, then we can get rid of the left part of the tree
+// Time: O(n)
+// Space: O(1), no memory allocated, using while loop to avoid recursion
+function inorderSuccessor2(
+  root: TreeNode | null,
+  p: TreeNode | null
+): TreeNode | null {
+  if (!p) return null;
+
+  let res = null;
+  while (root) {
+    if (p.val >= root.val) {
+      root = root.right;
+    } else {
+      res = root;
+      root = root.left;
+    }
+  }
+
+  return res;
+}
