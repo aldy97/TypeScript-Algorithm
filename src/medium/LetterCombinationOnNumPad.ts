@@ -1,33 +1,31 @@
-type mapProps = {
-  [key: number]: string;
+const dict: { [num: string]: string[] } = {
+  "2": ["a", "b", "c"],
+  "3": ["d", "e", "f"],
+  "4": ["g", "h", "i"],
+  "5": ["j", "k", "l"],
+  "6": ["m", "n", "o"],
+  "7": ["p", "q", "r", "s"],
+  "8": ["t", "u", "v"],
+  "9": ["w", "x", "y", "z"],
 };
-const map: mapProps = {
-  2: "abc",
-  3: "def",
-  4: "ghi",
-  5: "jkl",
-  6: "mno",
-  7: "pqrs",
-  8: "tuv",
-  9: "wxyz",
-};
-
+// Insights: backtrack
+// Time: O((4 ^ n) * n)
+// Space: O(n)
 function letterCombinations(digits: string): string[] {
-  if (digits.length === 0) {
-    return [];
-  }
-  let result: string[] = [];
-  function backtrack(index: number, curr: string) {
-    if (index === digits.length) {
-      result.push(curr);
-      return;
-    }
-    for (const char of map[parseInt(digits[index])]) {
-      backtrack(index + 1, curr + char);
-    }
-  }
-  backtrack(0, "");
-  return result;
+  if (!digits.length) return [];
+
+  const res: string[] = [];
+  findComb(digits, "", res);
+  return res;
 }
 
-console.log(letterCombinations("23"));
+const findComb = (digits: string, curr: string, res: string[]): void => {
+  if (curr.length === digits.length) {
+    res.push(curr);
+    return;
+  } else {
+    for (const char of dict[digits[curr.length]]) {
+      findComb(digits, curr + char, res);
+    }
+  }
+};

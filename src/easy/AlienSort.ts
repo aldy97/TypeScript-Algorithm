@@ -2,37 +2,33 @@
 // Space: O(1), the size of dic is fixed
 // Time: O(n), where n is the length of the words
 function isAlienSorted(words: string[], order: string): boolean {
-  // base case:
-  if (words.length <= 1) return true;
-
-  let p1 = 0;
-  let p2 = 1;
-  // build a dictonary for fast access
-  let dic = new Map<string, number>();
-
+  if (words.length < 2) return true;
+  let dict = new Map<string, number>();
   for (let i = 0; i < order.length; i++) {
-    dic.set(order[i], i);
+    dict.set(order[i], i);
   }
 
-  while (p2 < words.length) {
-    const left = words[p1];
-    const right = words[p2];
-    for (let i = 0; i < left.length; i++) {
-      const o1 = dic.get(left[i]) as number;
-      const o2 = dic.get(right[i]) as number;
-      if (!right[i]) {
-        return false;
-      }
-      // right sequence:
-      if (o1 < o2) {
-        break;
-      } else if (o1 > o2) {
-        return false;
-      }
+  for (let i = 0; i < words.length - 1; i++) {
+    if (!isSmaller(words[i], words[i + 1], dict)) {
+      return false;
     }
-    p1++;
-    p2++;
   }
 
   return true;
 }
+
+const isSmaller = (
+  a: string,
+  b: string,
+  dict: Map<string, number>
+): boolean => {
+  for (let i = 0; i < a.length; i++) {
+    if ((dict.get(a[i]) as number) > (dict.get(b[i]) as number)) {
+      return false;
+    } else if ((dict.get(a[i]) as number) < (dict.get(b[i]) as number)) {
+      return true;
+    }
+  }
+
+  return a.length <= b.length;
+};
