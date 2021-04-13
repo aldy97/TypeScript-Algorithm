@@ -1,6 +1,6 @@
-// Two pointer
-// Space: O(1), the size of dic is fixed
 // Time: O(n), where n is the length of the words
+// Space: O(1), the size of dic is fixed
+
 function isAlienSorted(words: string[], order: string): boolean {
   if (words.length < 2) return true;
   let dict = new Map<string, number>();
