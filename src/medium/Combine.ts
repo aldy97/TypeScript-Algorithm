@@ -6,7 +6,6 @@ function combine(n: number, k: number): number[][] {
   function backtrack(max: number, curr: number[], index: number) {
     if (curr.length === max) {
       results.push(curr);
-      console.log('results: ', results);
       return;
     } else {
       while (index <= n) {

@@ -16,5 +16,3 @@ function combinationSum(candidates: number[], target: number): number[][] {
     search(startIdx + 1, target);
   }
 }
-
-console.log(combinationSum([2, 3, 6, 7], 7));
