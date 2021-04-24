@@ -7,6 +7,7 @@ function leastBricks(wall: number[][]): number {
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < wall[i].length - 1; j++) {
+      // the length of the first brick in the row is already its edge to the right
       if (j !== 0) wall[i][j] += wall[i][j - 1];
       map.set(wall[i][j], (map.get(wall[i][j]) || 0) + 1);
     }
