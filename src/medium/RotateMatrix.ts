@@ -1,6 +1,5 @@
-/**
- Do not return anything, modify matrix in-place instead.
- */
+// Time: O(M)
+// Space: O(1)
 function rotateMatrix(matrix: number[][]): void {
   let s = 0;
   let e = matrix.length - 1;
