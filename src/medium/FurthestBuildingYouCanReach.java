@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     public int furthestBuilding(int[] heights, int bricks, int ladders) {
         // Create a priority queue with a comparator that makes it behave as a min-heap.
