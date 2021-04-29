@@ -1,33 +1,32 @@
+// Insights: dp
+// Time: O(m * n), where m is rows and n is cols
+// Space: O(m * n)
 function uniquePathsWithObstacles(obstacleGrid: number[][]): number {
-  //if the starting point is blocked, then no solution
-  if (obstacleGrid[0][0] === 1) {
-    return 0;
-  }
+  // base case:
+  if (obstacleGrid[0][0] === 1) return 0;
 
-  //dynamic table initialization
-  const height = obstacleGrid.length;
-  const width = obstacleGrid[0].length;
-  let dp = [];
-  for (let i = 0; i < height; i++) {
-    const array = new Array(width).fill(0);
-    dp.push(array);
+  const rows = obstacleGrid.length;
+  const cols = obstacleGrid[0].length;
+
+  // init dp table:
+  let dp: number[][] = [];
+  for (let i = 0; i < rows; i++) {
+    dp.push(new Array(cols).fill(0));
   }
   dp[0][0] = 1;
 
-  for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
-      if (i === 0 && j === 0) {
-        continue;
-      } else if (obstacleGrid[i][j] === 1) {
-        dp[i][j] = 0;
-      } else if (i === 0) {
-        dp[i][j] = dp[i][j - 1] === 1 ? 1 : 0;
-      } else if (j === 0) {
-        dp[i][j] = dp[i - 1][j] === 1 ? 1 : 0;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      if (i === 0 && j === 0) continue;
+      if (i === 0 && obstacleGrid[i][j] === 0) {
+        dp[i][j] = dp[i][j - 1];
+      } else if (j === 0 && obstacleGrid[i][j] === 0) {
+        dp[i][j] = dp[i - 1][j];
       } else {
-        dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        dp[i][j] = obstacleGrid[i][j] === 1 ? 0 : dp[i - 1][j] + dp[i][j - 1];
       }
     }
   }
-  return dp[height - 1][width - 1];
+
+  return dp[rows - 1][cols - 1];
 }
