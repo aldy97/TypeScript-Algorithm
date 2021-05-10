@@ -1,6 +1,7 @@
+// Insights: dp
 // Time: O(m * n)
 // Space: O(m * n)
-function minDistance(word1: string, word2: string): number {
+function minDistance2(word1: string, word2: string): number {
   const l1 = word1.length;
   const l2 = word2.length;
 
@@ -11,7 +12,7 @@ function minDistance(word1: string, word2: string): number {
   for (let i = 1; i <= l1; i++) {
     for (let j = 1; j <= l2; j++) {
       if (word1[i - 1] === word2[j - 1]) {
-        //if match, set to previous match for letter at both words
+        // if match, set to previous match for letter at both words
         dp[i][j] = dp[i - 1][j - 1] + 1;
       } else {
         // if no match, set to best match of removing a letter from either word
