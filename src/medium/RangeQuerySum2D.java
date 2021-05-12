@@ -7,8 +7,9 @@ class NumMatrix {
     public NumMatrix(int[][] matrix) {
         int rows = matrix.length;
         int cols = matrix[0].length;
-
+        // base case
         if (rows == 0 || cols == 0) return;
+        // array is initialized with default value when created, we enlarge the dp table by one so that we can avoid boundary issue
         this.dp = new int[rows + 1][cols + 1];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
