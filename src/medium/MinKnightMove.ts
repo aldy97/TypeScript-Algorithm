@@ -50,13 +50,14 @@ function minKnightMoves(x: number, y: number): number {
     } else if (x + y === 2) {
       return 2;
     } else {
-      const ret =
+      const res =
         Math.min(
           dfs(Math.abs(x - 1), Math.abs(y - 2)),
           dfs(Math.abs(x - 2), Math.abs(y - 1))
         ) + 1;
-      map.set(key, ret);
-      return ret;
+
+      map.set(key, res);
+      return res;
     }
   };
 
