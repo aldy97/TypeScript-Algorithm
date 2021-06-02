@@ -2,42 +2,33 @@
 // Time Complexity: O(m * n), where m is number or row, and n is number of col
 // Space Complexity: O(m * n)
 function maxAreaOfIsland(grid: number[][]): number {
-  if (grid.length === 0) return 0;
+  const dirs: [number, number][] = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
+  const row = grid.length;
+  const col = grid[0].length;
+  let max = 0;
 
-  let maxArea = 0;
-  const rows = grid.length;
-  const cols = grid[0].length;
-
-  const getArea = (row: number, col: number): number => {
-    // boundry check and value check
-    if (
-      row < 0 ||
-      row >= rows ||
-      col < 0 ||
-      col >= cols ||
-      grid[row][col] === 0
-    ) {
-      return 0;
+  // helper
+  const getArea = (x: number, y: number): number => {
+    if (x < 0 || x >= row || y < 0 || y >= col || grid[x][y] === 0) return 0;
+    grid[x][y] = 0;
+    let area = 1;
+    for (const [a, b] of dirs) {
+      area += getArea(x + a, y + b);
     }
-
-    grid[row][col] = 0;
-
-    return (
-      1 +
-      getArea(row, col - 1) +
-      getArea(row, col + 1) +
-      getArea(row - 1, col) +
-      getArea(row + 1, col)
-    );
+    return area;
   };
 
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
       if (grid[i][j] === 1) {
-        maxArea = Math.max(maxArea, getArea(i, j));
+        max = Math.max(max, getArea(i, j));
       }
     }
   }
-
-  return maxArea;
+  return max;
 }
